@@ -1,0 +1,26 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: fraud-ring-backend
+  jackson:
+    default-property-inclusion: non_null
+
+# Connection details for CognoDB (openCypher-over-Bolt, e.g. Neo4j).
+# Copy backend-java/.env.example values into real environment variables,
+# or override with -DCOGNODB_URI=... etc. at runtime.
+cognodb:
+  # No hardcoded default on purpose: if COGNODB_URI/COGNODB_PASSWORD aren't set,
+  # Spring fails to start with a clear "could not resolve placeholder" error
+  # instead of silently connecting with a committed credential.
+  uri: ${COGNODB_URI}
+  user: ${COGNODB_USER:cognodb}
+  password: ${COGNODB_PASSWORD}
+
+cors:
+  origin: ${CORS_ORIGIN:http://localhost:5173}
+
+logging:
+  level:
+    com.claimsring.api: INFO

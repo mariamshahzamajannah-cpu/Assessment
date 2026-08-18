@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: claims-ring-api
+    runtime: docker
+    rootDir: backend-java
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: COGNODB_URI
+        sync: false
+      - key: COGNODB_USER
+        value: cognodb
+      - key: COGNODB_PASSWORD
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+    healthCheckPath: /api/health
