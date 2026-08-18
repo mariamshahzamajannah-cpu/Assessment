@@ -1,0 +1,93 @@
+:root {
+  /* Paper + ink -- an aged claims-ledger palette, not the AI-default cream/terracotta pairing */
+  --paper: #ede6d3;
+  --paper-dim: #e2d9c0;
+  --paper-card: #f5efdf;
+  --rule: #c9be9e;
+  --rule-strong: #a99b74;
+
+  --ink: #1c2a20; /* deep evidence-room green-black, sidebar / headers */
+  --ink-soft: #2e4033;
+  --ink-text: #2b2a22; /* warm near-black body text on paper */
+  --ink-muted: #6b6552;
+
+  --case-red: #a6362c; /* sealing-wax red -- stamps, high risk */
+  --case-red-dim: #c96a5f;
+  --brass: #8a6f27; /* secondary accent -- verified / medium risk / links */
+  --brass-bright: #ab9038;
+  --evidence-green: #4c6b4f; /* low risk / cleared */
+
+  --font-display: "Special Elite", "Courier New", monospace;
+  --font-body: "Source Serif 4", Georgia, serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+
+  --radius-card: 3px;
+  --shadow-card: 0 1px 0 rgba(28, 42, 32, 0.08), 0 6px 16px -8px rgba(28, 42, 32, 0.35);
+  --shadow-pin: 0 10px 18px -8px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* subtle paper grain so flat fills don't look like plain CSS blocks */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 0;
+  background-image: radial-gradient(rgba(28, 42, 32, 0.05) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0;
+}
+
+a {
+  color: var(--brass);
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--case-red-dim);
+  color: var(--paper-card);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brass-bright);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
