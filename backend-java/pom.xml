@@ -47,12 +47,14 @@
   </dependencies>
 
   <build>
-    <finalName>fraud-ring-backend</finalName>
     <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <mainClass>com.claimsring.api.FraudRingApplication</mainClass>
+            </configuration>
+        </plugin>
     </plugins>
-  </build>
+</build>
 </project>
